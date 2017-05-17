@@ -28,20 +28,29 @@ $sigs=array("¥","±","α","≥","Ↄ","₽","Ʒ","Ǭ","Ǿ","Ȳ","ᶑ","ὤ","�
 			}
 			return $comp."";
 		}
-	function modulo ($a,$b)
-		{
-			if($b<0)
-			{
-				$c=$a%$b;
-				$m=$c+$b;
-				return abs($m);
-			}
-			else 
-			{
-				$m=$a%$b;
-				return $m;
-			}
-		}
+	function modulo($a,$b)
+	{
+		if($b==0)
+			$c="no puedes ingresar 0 en el segundo campo";
+		else
+			if ($a>0)
+				$c=$a%$b;	
+			else
+				if($b>0)
+				{
+					$d=$a/$b;
+					$d=ceil($d);
+					$d--;
+					$c=$a-($b*$d);
+				}
+				else
+				{
+					$d=$a/$b;
+					$d=ceil($d);
+					$c=$a-$b*$d;
+				}
+		return $c;
+	}
 	function playfair($cade,$frac)
 	{
 		$cont=strlen($cade);
